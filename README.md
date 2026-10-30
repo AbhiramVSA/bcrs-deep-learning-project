@@ -4,6 +4,10 @@ BCRS is a two-pass FCOS model for small-object detection in aerial images. It sc
 
 The paper studies this method on VisDrone-DET validation data. It reports that learned ranking improves over random selection at the same tile budget. It also reports lower accuracy and slower GPU latency than dense native-resolution inference. See [the paper](paper/main.pdf) and its [LaTeX source](paper/main.tex).
 
+## Submission status
+
+The source and paper files are ready. The full submission ZIP includes smoke-test weights for the BCRS command. Those weights do not reproduce the paper results. The final v3 detector and scorer checkpoints are missing. The Google Form fields and file-size limits remain unknown because the form returned HTTP 401 during inspection.
+
 ## Repository contents
 
 - `src/bcrs/` contains the detector, scorer, tile selection, training, and evaluation code.
@@ -26,13 +30,13 @@ python -m pip install -e .
 
 ## Predict one image
 
-Place the trained v3 detector and scorer checkpoints at local file paths. Then run:
+The full submission ZIP has smoke-test checkpoints at the paths below. They show the command flow and do not reproduce the paper results. Then run:
 
 ```bash
 python scripts/predict.py \
   --image path/to/image.jpg \
-  --detector-ckpt path/to/detector_best.pth \
-  --scorer-ckpt path/to/scorer_best.pth \
+  --detector-ckpt models/smoke/detector_best.pth \
+  --scorer-ckpt models/smoke/scorer_best.pth \
   --k 3 \
   --output-dir predictions
 ```
@@ -43,7 +47,7 @@ The command uses the experiment's size-aware fusion rule. It keeps coarse boxes 
 
 ## Paper source
 
-Upload `paper/` as a ZIP project to Overleaf. The source uses `main.tex`, `references.bib`, and the `generated/` and `figures/` folders. It does not include the original author affiliation.
+Upload `paper/` as a ZIP project to Overleaf. The source uses `main.tex`, `references.bib`, and the `generated/` and `figures/` folders. The author block has no affiliation because those details are not confirmed.
 
 ## Data and results
 
