@@ -47,7 +47,7 @@ The command uses the experiment's size-aware fusion rule. It keeps coarse boxes 
 
 ## Paper source
 
-Upload `paper/` as a ZIP project to Overleaf. The source uses `main.tex`, `references.bib`, and the `generated/` and `figures/` folders. The author block has no affiliation because those details are not confirmed.
+Upload `paper/` as a ZIP project to Overleaf. The source uses `main.tex`, `references.bib`, and the `generated/` and `figures/` folders. The authors are Abhiram Adabala (23BCE8643) and Dheeraj Karukola (24BCA7891) of VIT-AP University.
 
 ## Data and results
 
