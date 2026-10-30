@@ -1,0 +1,14 @@
+\begin{table*}[t]
+\caption{Per-frame area-cost proxy by VisDrone validation image geometry. Candidate counts follow the configured tile grid, including its edge-clamped final tiles. Each cost is $s^{-2}+\min(k,N)g^2/(HW)$ relative to one dense pass for that frame. The rows group all 548 annotated validation frames by width and height. Sources: \texttt{p3\_sweep\_joint\_v3} and its validation \texttt{coco.json}.}
+\label{tab:frame-cost}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Frame ($W\times H$) & Images & Tiles & Cost $k{=}1$ & Cost $k{=}3$ & Cost $k{=}6$ \\
+\midrule
+$960\times540$ & 121 & 6 & 0.57 & 1.58 & 3.10 \\
+$1360\times765$ & 408 & 8 & 0.31 & 0.82 & 1.57 \\
+$1920\times1080$ & 19 & 15 & 0.19 & 0.44 & 0.82 \\
+\bottomrule
+\end{tabular}
+\end{table*}

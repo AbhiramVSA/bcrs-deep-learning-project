@@ -1,0 +1,152 @@
+{
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "torch": "2.13.0+cu130",
+  "batch": 1,
+  "frame_hw": [
+    765,
+    1360
+  ],
+  "n_frames": 96,
+  "tiles_per_frame": 8,
+  "geometry": {
+    "ckpt": "runs/p2c_bcrs_joint_v3/detector_best.pth",
+    "scorer_ckpt": "runs/p2c_bcrs_joint_v3/scorer_best.pth",
+    "split_dir": "data/visdrone/VisDrone2019-DET-val",
+    "n_images": 96,
+    "batch": 1,
+    "tile_chunk": 32,
+    "k_list": "1,2,3,4,6",
+    "s": 4.0,
+    "tile": 512,
+    "overlap": 64,
+    "warmup": 3,
+    "out": "results/latency_v3/gpu_throughput_b1.json"
+  },
+  "protocol": "frames device-resident; B frames per call; BCRS tiles of all B frames batched; cudnn.benchmark on with untimed warm-up batches; detections moved to host; median ms per frame over batches",
+  "gpu_state_before": {
+    "query_gpu": "NVIDIA A100-PCIE-40GB, 13 %, 7394 MiB, 40960 MiB, 825 MHz",
+    "compute_apps": [
+      "1197920, <redacted-process>, 434 MiB",
+      "4004735, <redacted-process>, 1384 MiB",
+      "1354655, <redacted-process>, 1600 MiB",
+      "2041121, <redacted-process>, 1636 MiB",
+      "2041917, <redacted-process>, 602 MiB",
+      "2041911, <redacted-process>, 602 MiB",
+      "2431604, <redacted-process>, 536 MiB",
+      "3017853, <redacted-process>, 536 MiB"
+    ]
+  },
+  "gpu_state_after": {
+    "query_gpu": "NVIDIA A100-PCIE-40GB, 76 %, 9430 MiB, 40960 MiB, 1410 MHz",
+    "compute_apps": [
+      "1197920, <redacted-process>, 434 MiB",
+      "4004735, <redacted-process>, 1384 MiB",
+      "1354655, <redacted-process>, 1600 MiB",
+      "2041121, <redacted-process>, 1636 MiB",
+      "2041917, <redacted-process>, 602 MiB",
+      "2041911, <redacted-process>, 602 MiB",
+      "2431604, <redacted-process>, 536 MiB",
+      "3017853, <redacted-process>, 536 MiB",
+      "3070973, <redacted-process>, 2030 MiB"
+    ]
+  },
+  "modes": {
+    "dense_s1": {
+      "ms_per_frame_median": 18.564,
+      "ms_per_frame_mean": 21.588,
+      "fps": 53.87,
+      "n_batches": 93
+    },
+    "fwd_dense_s1": {
+      "ms_per_frame_median": 13.217,
+      "ms_per_frame_mean": 15.037,
+      "fps": 75.66,
+      "n_batches": 93
+    },
+    "dense_s2": {
+      "ms_per_frame_median": 18.669,
+      "ms_per_frame_mean": 20.814,
+      "fps": 53.56,
+      "n_batches": 93
+    },
+    "fwd_dense_s2": {
+      "ms_per_frame_median": 13.332,
+      "ms_per_frame_mean": 13.999,
+      "fps": 75.01,
+      "n_batches": 93
+    },
+    "dense_s4": {
+      "ms_per_frame_median": 18.499,
+      "ms_per_frame_mean": 20.785,
+      "fps": 54.06,
+      "n_batches": 93
+    },
+    "fwd_dense_s4": {
+      "ms_per_frame_median": 13.369,
+      "ms_per_frame_mean": 14.098,
+      "fps": 74.8,
+      "n_batches": 93
+    },
+    "bcrs_k1": {
+      "ms_per_frame_median": 41.552,
+      "ms_per_frame_mean": 45.67,
+      "fps": 24.07,
+      "n_batches": 93
+    },
+    "fwd_bcrs_k1": {
+      "ms_per_frame_median": 27.089,
+      "ms_per_frame_mean": 28.043,
+      "fps": 36.91,
+      "n_batches": 93
+    },
+    "bcrs_k2": {
+      "ms_per_frame_median": 46.525,
+      "ms_per_frame_mean": 51.935,
+      "fps": 21.49,
+      "n_batches": 93
+    },
+    "fwd_bcrs_k2": {
+      "ms_per_frame_median": 27.192,
+      "ms_per_frame_mean": 28.615,
+      "fps": 36.78,
+      "n_batches": 93
+    },
+    "bcrs_k3": {
+      "ms_per_frame_median": 52.533,
+      "ms_per_frame_mean": 58.426,
+      "fps": 19.04,
+      "n_batches": 93
+    },
+    "fwd_bcrs_k3": {
+      "ms_per_frame_median": 27.402,
+      "ms_per_frame_mean": 29.368,
+      "fps": 36.49,
+      "n_batches": 93
+    },
+    "bcrs_k4": {
+      "ms_per_frame_median": 60.294,
+      "ms_per_frame_mean": 64.45,
+      "fps": 16.59,
+      "n_batches": 93
+    },
+    "fwd_bcrs_k4": {
+      "ms_per_frame_median": 27.143,
+      "ms_per_frame_mean": 29.301,
+      "fps": 36.84,
+      "n_batches": 93
+    },
+    "bcrs_k6": {
+      "ms_per_frame_median": 77.008,
+      "ms_per_frame_mean": 77.622,
+      "fps": 12.99,
+      "n_batches": 93
+    },
+    "fwd_bcrs_k6": {
+      "ms_per_frame_median": 27.409,
+      "ms_per_frame_mean": 30.632,
+      "fps": 36.48,
+      "n_batches": 93
+    }
+  },
+  "commit": "799eab3"
+}

@@ -1,0 +1,14 @@
+\begin{table}[t]
+\caption{Owner recall@$k$ (\%): mean per-image fraction of coarse misses whose unique owner tile is selected. VisDrone-DET val, 541 images with at least one miss (run \texttt{p2b\_scorer\_s4v3}, final-epoch scorer on the frozen $s{=}4$ detector, not the best checkpoint used downstream). Single seed; conditioning input $b=0.5$.}
+\label{tab:selection}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Ranking & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}5$ & $k{=}8$ \\
+\midrule
+Random & 12.9 & 26.6 & 38.7 & 65.3 & 98.2 \\
+Learned & 39.1 & 58.2 & 72.5 & 87.6 & 99.7 \\
+Oracle & 52.4 & 75.3 & 87.6 & 97.9 & 99.9 \\
+\bottomrule
+\end{tabular}
+\end{table}

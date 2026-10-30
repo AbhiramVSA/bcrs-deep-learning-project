@@ -1,0 +1,22 @@
+[
+  {
+    "file": "models/smoke/detector_best.pth",
+    "bytes": 76578715,
+    "sha256": "75f28639f0a4571ac198919b451070041a7c9c104e0ae1ad363cc2a78af2df9b",
+    "run_name": "p2c_joint_smoke",
+    "epoch": 1,
+    "max_train_images": 12,
+    "max_val_images": 8,
+    "paper_v3_checkpoint": false
+  },
+  {
+    "file": "models/smoke/scorer_best.pth",
+    "bytes": 3248021,
+    "sha256": "d726c5396621d1df3bdacb556a3fb1219d298ee7d885fbc64bfd5c23f88fd07a",
+    "run_name": "p2c_joint_smoke",
+    "epoch": 1,
+    "max_train_images": 12,
+    "max_val_images": 8,
+    "paper_v3_checkpoint": false
+  }
+]

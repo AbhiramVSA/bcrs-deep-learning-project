@@ -1,0 +1,53 @@
+[11:15:20] run=p0_smoke_overfit arch=fcos_r18 params=19.12M device=cuda amp=fp16 s=2.0 train=16 val=16 commit=5b4904b
+[11:16:46] e1 it10/480 loss=2.402 classification=0.810 bbox_regression=0.867 bbox_ctrness=0.725 lr=4.58e-05 14.5 img/s
+[11:17:53] e2 it20/480 loss=1.814 classification=0.436 bbox_regression=0.700 bbox_ctrness=0.678 lr=8.75e-05 17.2 img/s
+[11:17:54] e3 it30/480 loss=1.898 classification=0.543 bbox_regression=0.687 bbox_ctrness=0.667 lr=1.29e-04 15.0 img/s
+[11:17:55] e4 it40/480 loss=1.746 classification=0.469 bbox_regression=0.612 bbox_ctrness=0.665 lr=1.71e-04 17.1 img/s
+[11:17:56] e6 it50/480 loss=1.754 classification=0.468 bbox_regression=0.637 bbox_ctrness=0.649 lr=2.00e-04 14.8 img/s
+[11:17:57] e7 it60/480 loss=1.575 classification=0.339 bbox_regression=0.571 bbox_ctrness=0.665 lr=2.00e-04 16.4 img/s
+[11:17:59] e8 it70/480 loss=1.569 classification=0.327 bbox_regression=0.571 bbox_ctrness=0.671 lr=1.99e-04 17.4 img/s
+[11:18:00] e9 it80/480 loss=1.693 classification=0.422 bbox_regression=0.616 bbox_ctrness=0.655 lr=1.97e-04 17.0 img/s
+[11:18:01] e11 it90/480 loss=1.451 classification=0.318 bbox_regression=0.491 bbox_ctrness=0.642 lr=1.95e-04 14.2 img/s
+[11:18:02] e12 it100/480 loss=1.440 classification=0.293 bbox_regression=0.500 bbox_ctrness=0.647 lr=1.93e-04 15.9 img/s
+[11:18:03] e13 it110/480 loss=1.495 classification=0.346 bbox_regression=0.504 bbox_ctrness=0.644 lr=1.90e-04 16.4 img/s
+[11:18:04] e14 it120/480 loss=1.494 classification=0.367 bbox_regression=0.494 bbox_ctrness=0.633 lr=1.87e-04 15.5 img/s
+[11:18:06] e16 it130/480 loss=1.186 classification=0.174 bbox_regression=0.390 bbox_ctrness=0.622 lr=1.83e-04 13.5 img/s
+[11:18:07] e17 it140/480 loss=1.143 classification=0.118 bbox_regression=0.386 bbox_ctrness=0.640 lr=1.78e-04 16.6 img/s
+[11:18:08] e18 it150/480 loss=1.303 classification=0.197 bbox_regression=0.474 bbox_ctrness=0.632 lr=1.74e-04 18.6 img/s
+[11:18:09] e19 it160/480 loss=1.078 classification=0.107 bbox_regression=0.339 bbox_ctrness=0.631 lr=1.69e-04 19.2 img/s
+[11:18:24] eval e19: AP=0.2040 AP50=0.3906 AP_s=0.0443 AR@500=0.2915
+[11:18:26] e21 it170/480 loss=1.129 classification=0.151 bbox_regression=0.363 bbox_ctrness=0.614 lr=1.63e-04 16.2 img/s
+[11:18:27] e22 it180/480 loss=1.044 classification=0.105 bbox_regression=0.310 bbox_ctrness=0.630 lr=1.57e-04 17.1 img/s
+[11:18:28] e23 it190/480 loss=1.069 classification=0.146 bbox_regression=0.313 bbox_ctrness=0.609 lr=1.51e-04 18.9 img/s
+[11:18:29] e24 it200/480 loss=1.065 classification=0.088 bbox_regression=0.363 bbox_ctrness=0.613 lr=1.45e-04 19.5 img/s
+[11:18:30] e26 it210/480 loss=1.157 classification=0.125 bbox_regression=0.410 bbox_ctrness=0.622 lr=1.38e-04 16.4 img/s
+[11:18:31] e27 it220/480 loss=1.143 classification=0.134 bbox_regression=0.400 bbox_ctrness=0.609 lr=1.31e-04 17.3 img/s
+[11:18:32] e28 it230/480 loss=0.986 classification=0.081 bbox_regression=0.292 bbox_ctrness=0.613 lr=1.24e-04 17.7 img/s
+[11:18:33] e29 it240/480 loss=0.990 classification=0.086 bbox_regression=0.308 bbox_ctrness=0.596 lr=1.17e-04 18.6 img/s
+[11:18:34] e31 it250/480 loss=1.122 classification=0.138 bbox_regression=0.378 bbox_ctrness=0.605 lr=1.10e-04 17.2 img/s
+[11:18:35] e32 it260/480 loss=0.980 classification=0.068 bbox_regression=0.307 bbox_ctrness=0.606 lr=1.03e-04 17.6 img/s
+[11:18:36] e33 it270/480 loss=0.978 classification=0.076 bbox_regression=0.311 bbox_ctrness=0.592 lr=9.56e-05 18.9 img/s
+[11:18:37] e34 it280/480 loss=0.921 classification=0.058 bbox_regression=0.251 bbox_ctrness=0.612 lr=8.84e-05 17.7 img/s
+[11:18:39] e36 it290/480 loss=0.834 classification=0.039 bbox_regression=0.193 bbox_ctrness=0.601 lr=8.12e-05 15.9 img/s
+[11:18:40] e37 it300/480 loss=0.807 classification=0.027 bbox_regression=0.174 bbox_ctrness=0.605 lr=7.41e-05 17.6 img/s
+[11:18:41] e38 it310/480 loss=0.882 classification=0.034 bbox_regression=0.252 bbox_ctrness=0.597 lr=6.72e-05 18.2 img/s
+[11:18:42] e39 it320/480 loss=0.891 classification=0.038 bbox_regression=0.243 bbox_ctrness=0.611 lr=6.04e-05 17.8 img/s
+[11:18:55] eval e39: AP=0.4647 AP50=0.6826 AP_s=0.2601 AR@500=0.5524
+[11:18:56] e41 it330/480 loss=0.856 classification=0.046 bbox_regression=0.222 bbox_ctrness=0.587 lr=5.38e-05 16.2 img/s
+[11:18:57] e42 it340/480 loss=0.815 classification=0.023 bbox_regression=0.211 bbox_ctrness=0.580 lr=4.75e-05 19.0 img/s
+[11:18:59] e43 it350/480 loss=0.866 classification=0.059 bbox_regression=0.216 bbox_ctrness=0.591 lr=4.15e-05 18.3 img/s
+[11:19:00] e44 it360/480 loss=0.844 classification=0.038 bbox_regression=0.203 bbox_ctrness=0.604 lr=3.57e-05 18.3 img/s
+[11:19:01] e46 it370/480 loss=0.766 classification=0.021 bbox_regression=0.148 bbox_ctrness=0.597 lr=3.03e-05 16.3 img/s
+[11:19:02] e47 it380/480 loss=0.741 classification=0.013 bbox_regression=0.126 bbox_ctrness=0.602 lr=2.53e-05 18.0 img/s
+[11:19:03] e48 it390/480 loss=0.779 classification=0.048 bbox_regression=0.153 bbox_ctrness=0.578 lr=2.07e-05 18.2 img/s
+[11:19:04] e49 it400/480 loss=0.838 classification=0.035 bbox_regression=0.205 bbox_ctrness=0.597 lr=1.65e-05 18.7 img/s
+[11:19:05] e51 it410/480 loss=0.734 classification=0.013 bbox_regression=0.119 bbox_ctrness=0.603 lr=1.27e-05 17.1 img/s
+[11:19:06] e52 it420/480 loss=0.733 classification=0.012 bbox_regression=0.120 bbox_ctrness=0.602 lr=9.37e-06 17.8 img/s
+[11:19:07] e53 it430/480 loss=0.989 classification=0.098 bbox_regression=0.293 bbox_ctrness=0.598 lr=6.54e-06 18.7 img/s
+[11:19:08] e54 it440/480 loss=0.742 classification=0.016 bbox_regression=0.138 bbox_ctrness=0.587 lr=4.20e-06 18.5 img/s
+[11:19:09] e56 it450/480 loss=0.795 classification=0.028 bbox_regression=0.170 bbox_ctrness=0.597 lr=2.37e-06 13.4 img/s
+[11:19:10] e57 it460/480 loss=0.773 classification=0.026 bbox_regression=0.147 bbox_ctrness=0.601 lr=1.06e-06 17.1 img/s
+[11:19:11] e58 it470/480 loss=0.786 classification=0.034 bbox_regression=0.163 bbox_ctrness=0.589 lr=2.64e-07 18.5 img/s
+[11:19:12] e59 it480/480 loss=0.792 classification=0.032 bbox_regression=0.181 bbox_ctrness=0.579 lr=0.00e+00 16.9 img/s
+[11:19:25] eval e59: AP=0.5392 AP50=0.7230 AP_s=0.3513 AR@500=0.6223
+[11:19:26] done. best AP=0.5392 -> results\p0_smoke_overfit\metrics.json

@@ -1,0 +1,19 @@
+# P1 recipe v2 at native resolution: frozen BN (+0.7 AP in the control) plus the
+# two ESOD-recipe ingredients our runs lacked — multi-scale jitter and weight
+# EMA — with the schedule stretched to 30 epochs. Same detector, same eval.
+# If this clears the s2 number decisively, s2 and s4 get the same recipe so the
+# uniform curve is consistent.
+run_name: p1_uniform_s1_v2
+arch: fcos_r18
+frozen_bn: true
+scale_jitter: [0.7, 1.4]
+ema: true
+downsample: 1.0
+epochs: 30
+batch_size: 4
+lr: 5.0e-5
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 5

@@ -1,0 +1,15 @@
+# Local smoke for joint BCRS training (RTX 3060): tiny subsets, throwaway init.
+run_name: p2c_joint_smoke
+detector_ckpt: runs/p0_smoke_overfit/best.pth
+train_dir: data/visdrone/VisDrone2019-DET-val
+val_dir: data/visdrone/VisDrone2019-DET-val
+max_train_images: 12
+max_val_images: 8
+epochs: 2
+batch_size: 2
+k_min: 1
+k_max: 3
+num_workers: 0
+amp: bf16
+eval_every_epochs: 1
+log_every_iters: 2

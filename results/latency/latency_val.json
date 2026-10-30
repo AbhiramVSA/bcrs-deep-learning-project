@@ -1,0 +1,201 @@
+{
+  "gpu": "NVIDIA A100-PCIE-40GB",
+  "torch": "2.13.0+cu130",
+  "n_images": 100,
+  "geometry": {
+    "ckpt": "runs/p2c_bcrs_joint_v2/detector_best.pth",
+    "scorer_ckpt": "runs/p2c_bcrs_joint_v2/scorer_best.pth",
+    "split_dir": "data/visdrone/VisDrone2019-DET-val",
+    "n_images": 100,
+    "k_list": "1,2,3,4,6",
+    "s": 4.0,
+    "tile": 512,
+    "overlap": 64,
+    "warmup": 10,
+    "out": "results/latency/latency_val.json"
+  },
+  "protocol": "frame device-resident before timing; resize and crops on device; bf16 autocast; cudnn.benchmark off; untimed spin-up forward per image; CUDA-synchronised regions; median/p95 over images after warm-up",
+  "gpu_state_before": {
+    "query_gpu": "NVIDIA A100-PCIE-40GB, 65 %, 14979 MiB, 40960 MiB, 1410 MHz, 1410 MHz",
+    "compute_apps": [
+      "1197920, <redacted-process>, 434 MiB",
+      "4004735, <redacted-process>, 1384 MiB",
+      "499435, <redacted-process>, 6448 MiB",
+      "3717942, <redacted-process>, 558 MiB",
+      "3717943, <redacted-process>, 646 MiB",
+      "3717944, <redacted-process>, 580 MiB",
+      "3717941, <redacted-process>, 522 MiB",
+      "3998102, <redacted-process>, 606 MiB",
+      "3998098, <redacted-process>, 606 MiB",
+      "3998094, <redacted-process>, 606 MiB",
+      "887936, <redacted-process>, 892 MiB",
+      "889931, <redacted-process>, 536 MiB",
+      "889926, <redacted-process>, 536 MiB",
+      "1194928, <redacted-process>, 536 MiB"
+    ],
+    "n_other_processes": 14
+  },
+  "gpu_state_after": {
+    "query_gpu": "NVIDIA A100-PCIE-40GB, 85 %, 16591 MiB, 40960 MiB, 1410 MHz, 1410 MHz",
+    "compute_apps": [
+      "1197920, <redacted-process>, 434 MiB",
+      "4004735, <redacted-process>, 1384 MiB",
+      "499435, <redacted-process>, 6448 MiB",
+      "3717942, <redacted-process>, 558 MiB",
+      "3717943, <redacted-process>, 646 MiB",
+      "3717944, <redacted-process>, 580 MiB",
+      "3717941, <redacted-process>, 522 MiB",
+      "3998102, <redacted-process>, 606 MiB",
+      "3998098, <redacted-process>, 606 MiB",
+      "3998094, <redacted-process>, 606 MiB",
+      "887936, <redacted-process>, 892 MiB",
+      "889931, <redacted-process>, 536 MiB",
+      "889926, <redacted-process>, 536 MiB",
+      "1194928, <redacted-process>, 536 MiB",
+      "1492623, <redacted-process>, 1606 MiB"
+    ],
+    "n_other_processes": 15
+  },
+  "mean_frame_hw_tiles": [
+    725.4,
+    1289.6,
+    7.7
+  ],
+  "latency": {
+    "bcrs_k1": {
+      "median_ms": 63.291,
+      "p95_ms": 92.84,
+      "mean_ms": 66.289,
+      "n": 100
+    },
+    "bcrs_k2": {
+      "median_ms": 78.097,
+      "p95_ms": 117.502,
+      "mean_ms": 81.641,
+      "n": 100
+    },
+    "bcrs_k3": {
+      "median_ms": 96.472,
+      "p95_ms": 146.698,
+      "mean_ms": 98.272,
+      "n": 100
+    },
+    "bcrs_k4": {
+      "median_ms": 111.166,
+      "p95_ms": 167.662,
+      "mean_ms": 112.333,
+      "n": 100
+    },
+    "bcrs_k6": {
+      "median_ms": 132.314,
+      "p95_ms": 214.259,
+      "mean_ms": 140.475,
+      "n": 100
+    },
+    "coarse_only": {
+      "median_ms": 30.374,
+      "p95_ms": 46.906,
+      "mean_ms": 31.174,
+      "n": 100
+    },
+    "scorer": {
+      "median_ms": 2.045,
+      "p95_ms": 4.465,
+      "mean_ms": 2.434,
+      "n": 100
+    },
+    "uniform_s1": {
+      "median_ms": 30.128,
+      "p95_ms": 51.977,
+      "mean_ms": 32.481,
+      "n": 100
+    },
+    "uniform_s2": {
+      "median_ms": 26.682,
+      "p95_ms": 58.888,
+      "mean_ms": 30.444,
+      "n": 100
+    },
+    "uniform_s4": {
+      "median_ms": 28.948,
+      "p95_ms": 53.375,
+      "mean_ms": 31.481,
+      "n": 100
+    }
+  },
+  "components": {
+    "fine_k1": {
+      "median_ms": 28.637,
+      "p95_ms": 51.304,
+      "mean_ms": 31.005,
+      "n": 100
+    },
+    "fine_k2": {
+      "median_ms": 44.411,
+      "p95_ms": 75.782,
+      "mean_ms": 45.952,
+      "n": 100
+    },
+    "fine_k3": {
+      "median_ms": 60.146,
+      "p95_ms": 104.208,
+      "mean_ms": 61.752,
+      "n": 100
+    },
+    "fine_k4": {
+      "median_ms": 74.667,
+      "p95_ms": 122.422,
+      "mean_ms": 75.331,
+      "n": 100
+    },
+    "fine_k6": {
+      "median_ms": 89.447,
+      "p95_ms": 173.456,
+      "mean_ms": 99.096,
+      "n": 100
+    },
+    "fuse": {
+      "median_ms": 1.69,
+      "p95_ms": 1.903,
+      "mean_ms": 1.677,
+      "n": 100
+    },
+    "h2d_copy": {
+      "median_ms": 1.476,
+      "p95_ms": 5.372,
+      "mean_ms": 1.896,
+      "n": 100
+    },
+    "gpu_resize_s4": {
+      "median_ms": 0.54,
+      "p95_ms": 3.417,
+      "mean_ms": 1.01,
+      "n": 100
+    },
+    "cpu_resize_s4": {
+      "median_ms": 48.605,
+      "p95_ms": 64.824,
+      "mean_ms": 48.679,
+      "n": 100
+    },
+    "forward_only_s1": {
+      "median_ms": 15.151,
+      "p95_ms": 22.942,
+      "mean_ms": 15.968,
+      "n": 100
+    },
+    "forward_only_s4": {
+      "median_ms": 14.701,
+      "p95_ms": 20.364,
+      "mean_ms": 15.449,
+      "n": 100
+    },
+    "forward_only_tile": {
+      "median_ms": 14.886,
+      "p95_ms": 22.761,
+      "mean_ms": 15.612,
+      "n": 100
+    }
+  },
+  "commit": "94fff31"
+}

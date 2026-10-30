@@ -1,0 +1,15 @@
+\begin{table}[t]
+\caption{Uniform-resolution baselines on VisDrone-DET val (FCOS, ResNet-18). Each row is a separately trained model with the same architecture and recipe, evaluated at its training resolution. Cost is relative to one dense native-resolution pass. AP uses 100 detections per category per image; AP$_{50}$, size AP and AR$_{500}$ use 500. Single seed. Evaluated with \texttt{eval\_ckpt.py}. The row ``+12 epochs'' continues the $s{=}1$ model for 12 epochs on whole images, so that it has the training length of the jointly trained BCRS model. Corrected v3 generation.}
+\label{tab:uniform}
+\centering
+\begin{tabular}{lccccccc}
+\toprule
+Input & Cost & AP & AP$_{50}$ & AP$_s$ & AP$_m$ & AP$_l$ & AR$_{500}$ \\
+\midrule
+$s{=}4$ & 0.062 & 6.1 & 11.6 & 0.8 & 9.6 & 30.0 & 14.9 \\
+$s{=}2$ & 0.250 & 14.4 & 26.3 & 4.9 & 24.4 & 45.5 & 28.2 \\
+$s{=}1$ & 1.000 & 23.4 & 40.7 & 13.7 & 36.2 & 48.0 & 39.6 \\
+$s{=}1$, +12 epochs & 1.000 & 24.1 & 41.6 & 14.5 & 36.7 & 49.4 & 40.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
