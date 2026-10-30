@@ -26,28 +26,28 @@
   "gpu_state_before": {
     "query_gpu": "NVIDIA A100-PCIE-40GB, 13 %, 7394 MiB, 40960 MiB, 825 MHz",
     "compute_apps": [
-      "1197920, /usr/local/bin/python3.11, 434 MiB",
-      "4004735, .venv/bin/python, 1384 MiB",
-      "1354655, /home/fas/lv03/adithya/lnf/venv/bin/python, 1600 MiB",
-      "2041121, /home/fas/lv03/adithya/lnf/venv/bin/python, 1636 MiB",
-      "2041917, ffmpeg, 602 MiB",
-      "2041911, ffmpeg, 602 MiB",
-      "2431604, ffmpeg, 536 MiB",
-      "3017853, ffmpeg, 536 MiB"
+      "1197920, <redacted-process>, 434 MiB",
+      "4004735, <redacted-process>, 1384 MiB",
+      "1354655, <redacted-process>, 1600 MiB",
+      "2041121, <redacted-process>, 1636 MiB",
+      "2041917, <redacted-process>, 602 MiB",
+      "2041911, <redacted-process>, 602 MiB",
+      "2431604, <redacted-process>, 536 MiB",
+      "3017853, <redacted-process>, 536 MiB"
     ]
   },
   "gpu_state_after": {
     "query_gpu": "NVIDIA A100-PCIE-40GB, 76 %, 9430 MiB, 40960 MiB, 1410 MHz",
     "compute_apps": [
-      "1197920, /usr/local/bin/python3.11, 434 MiB",
-      "4004735, .venv/bin/python, 1384 MiB",
-      "1354655, /home/fas/lv03/adithya/lnf/venv/bin/python, 1600 MiB",
-      "2041121, /home/fas/lv03/adithya/lnf/venv/bin/python, 1636 MiB",
-      "2041917, ffmpeg, 602 MiB",
-      "2041911, ffmpeg, 602 MiB",
-      "2431604, ffmpeg, 536 MiB",
-      "3017853, ffmpeg, 536 MiB",
-      "3070973, python, 2030 MiB"
+      "1197920, <redacted-process>, 434 MiB",
+      "4004735, <redacted-process>, 1384 MiB",
+      "1354655, <redacted-process>, 1600 MiB",
+      "2041121, <redacted-process>, 1636 MiB",
+      "2041917, <redacted-process>, 602 MiB",
+      "2041911, <redacted-process>, 602 MiB",
+      "2431604, <redacted-process>, 536 MiB",
+      "3017853, <redacted-process>, 536 MiB",
+      "3070973, <redacted-process>, 2030 MiB"
     ]
   },
   "modes": {

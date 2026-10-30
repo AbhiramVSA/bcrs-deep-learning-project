@@ -1,28 +1,50 @@
-# BCRS: Budget-Conditioned Region Selection for Efficient Small-Object Detection
+# Budget-Constrained Region Selection (BCRS)
 
-Research code for the paper *Budget-Conditioned Region Selection for Efficient
-Small-Object Detection in High-Resolution Imagery* (proposal: `initial-resources/main.pdf`).
+BCRS is a two-pass FCOS model for small-object detection in aerial images. It scores image tiles and runs native-resolution detection on the top-k tiles.
 
-BCRS is a two-pass detector: a coarse pass on a downsampled image produces
-provisional detections and per-tile scores; a budget-conditioned differentiable
-top-k head selects tiles for native-resolution re-detection under a compute
-budget B given **at inference time**; fine and coarse detections are fused.
-One trained model traces the full accuracy-computation curve.
+The paper studies this method on VisDrone-DET validation data. It reports that learned ranking improves over random selection at the same tile budget. It also reports lower accuracy and slower GPU latency than dense native-resolution inference. See [the paper](paper/main.pdf) and its [LaTeX source](paper/main.tex).
 
-## Layout
-- `PLAN.md` - master research plan (methodology, metrics, experiment matrix)
-- `docs/A100_SETUP.md` - commands to run on the A100 training server
-- `docs/DATASETS.md` - dataset acquisition and preprocessing
-- `src/bcrs/` - model, training, evaluation code
-- `configs/` - experiment configs (one YAML per run)
-- `scripts/` - setup, download, launch, and table-generation scripts
-- `results/` - committed metrics JSONs + curves (weights stay on the server)
-- `paper/` - LaTeX sources
+## Repository contents
 
-## Quick start (A100 server)
+- `src/bcrs/` contains the detector, scorer, tile selection, training, and evaluation code.
+- `configs/` contains experiment settings.
+- `scripts/` contains training, evaluation, figure, table, and image prediction commands.
+- `results/` contains archived metrics and training logs. Some hardware process names and paths are redacted.
+- `paper/` contains the paper PDF, LaTeX source, tables, figures, and references.
+
+The BCRS image command is `scripts/predict.py`. It requires a trained BCRS detector checkpoint and scorer checkpoint. The released source snapshot does not contain the final v3 checkpoints. The command rejects a missing checkpoint and does not create model weights.
+
+## Install
+
+Install a PyTorch and torchvision build for your system. For CPU-only use, run:
+
 ```bash
-git clone <this-repo> && cd small-obj-detection
-bash scripts/setup_server.sh          # venv + deps
-bash scripts/download_visdrone.sh     # ~1.8 GB into data/visdrone/
+python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -r requirements.txt
+python -m pip install -e .
 ```
-See `docs/A100_SETUP.md` for the full workflow.
+
+## Predict one image
+
+Place the trained v3 detector and scorer checkpoints at local file paths. Then run:
+
+```bash
+python scripts/predict.py \
+  --image path/to/image.jpg \
+  --detector-ckpt path/to/detector_best.pth \
+  --scorer-ckpt path/to/scorer_best.pth \
+  --k 3 \
+  --output-dir predictions
+```
+
+The command writes `predictions/annotated.png` and `predictions/predictions.json`. Set `--k 0` to run the coarse pass without native-resolution tiles. The command uses CPU by default. Add `--device cuda` when CUDA is available.
+
+## Paper source
+
+Upload `paper/` as a ZIP project to Overleaf. The source uses `main.tex`, `references.bib`, and the `generated/` and `figures/` folders. It does not include the original author affiliation.
+
+## Data and results
+
+The experiment code uses VisDrone-DET. The dataset is not included. Download instructions and the archive source appear in [docs/DATASETS.md](docs/DATASETS.md). The paper discloses limits in checkpoint provenance and experiment reproduction.
+
+The earlier demo used ESOD code and weights. This repository's prediction command uses BCRS code. The ESOD demo and its weights are not part of this repository.

@@ -1,19 +1,36 @@
 """Tests for the base-recipe upgrades: scale-jitter augmentation and weight EMA."""
+import json
 import math
+import random
+from pathlib import Path
 
+import pytest
 import torch
+from PIL import Image
 
 from bcrs.data import VisDroneDataset
 from bcrs.models import build_detector
 from bcrs.train import ModelEMA
 
-VAL = "data/visdrone/VisDrone2019-DET-val"
+@pytest.fixture
+def val_dir(tmp_path: Path) -> Path:
+    image_dir = tmp_path / "images"
+    image_dir.mkdir()
+    Image.new("RGB", (200, 160), color=(30, 60, 90)).save(image_dir / "sample.png")
+    (tmp_path / "coco.json").write_text(json.dumps({
+        "images": [{"id": 1, "file_name": "sample.png", "width": 200, "height": 160}],
+        "annotations": [{"id": 1, "image_id": 1, "category_id": 1,
+                         "bbox": [20, 20, 100, 80], "area": 8000, "iscrowd": 0}],
+        "categories": [{"id": 1, "name": "pedestrian"}],
+    }))
+    return tmp_path
 
 
-def test_scale_jitter_changes_size_and_keeps_boxes_consistent():
+def test_scale_jitter_changes_size_and_keeps_boxes_consistent(val_dir):
     torch.manual_seed(0)
-    ds = VisDroneDataset(VAL, downsample=2.0, train=True, hflip_p=0.0, scale_jitter=(0.7, 1.4), max_images=1)
-    base = VisDroneDataset(VAL, downsample=2.0, train=False, max_images=1)
+    random.seed(0)
+    ds = VisDroneDataset(val_dir, downsample=2.0, train=True, hflip_p=0.0, scale_jitter=(0.7, 1.4), max_images=1)
+    base = VisDroneDataset(val_dir, downsample=2.0, train=False, max_images=1)
     img_b, t_b = base[0]
     sizes = set()
     for _ in range(6):
@@ -30,8 +47,8 @@ def test_scale_jitter_changes_size_and_keeps_boxes_consistent():
     assert len(sizes) > 1  # jitter actually varied the size
 
 
-def test_no_jitter_in_eval_mode():
-    ds = VisDroneDataset(VAL, downsample=2.0, train=False, scale_jitter=(0.7, 1.4), max_images=1)
+def test_no_jitter_in_eval_mode(val_dir):
+    ds = VisDroneDataset(val_dir, downsample=2.0, train=False, scale_jitter=(0.7, 1.4), max_images=1)
     assert ds.scale_jitter is None
     a, _ = ds[0]
     b, _ = ds[0]

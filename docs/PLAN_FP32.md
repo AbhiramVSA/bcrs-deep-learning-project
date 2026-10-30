@@ -178,7 +178,7 @@ python scripts/apply_decisions.py --expansion "Budget-Constrained Region Selecti
 On the A100 server:
 
 ```bash
-cd /home/abi/lv01/github/bcrs-small-object-detection
+cd /path/to/bcrs-deep-learning-project
 source .venv/bin/activate
 git pull
 DRY=1 bash scripts/pipeline_fp32.sh | grep -E "STEP|RUN|SKIP|DECISION"
