@@ -39,6 +39,8 @@ python scripts/predict.py \
 
 The command writes `predictions/annotated.png` and `predictions/predictions.json`. Set `--k 0` to run the coarse pass without native-resolution tiles. The command uses CPU by default. Add `--device cuda` when CUDA is available.
 
+The command uses the experiment's size-aware fusion rule. It keeps coarse boxes at full weight when their longer side is at least two times the tile overlap.
+
 ## Paper source
 
 Upload `paper/` as a ZIP project to Overleaf. The source uses `main.tex`, `references.bib`, and the `generated/` and `figures/` folders. It does not include the original author affiliation.

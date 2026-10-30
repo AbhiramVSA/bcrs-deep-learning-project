@@ -31,6 +31,7 @@ def test_select_tiles_clamps_k_and_rejects_invalid_input():
 def test_predict_runs_fine_pass_only_on_selected_tiles(monkeypatch):
     tiles = torch.tensor([[0, 0, 10, 10], [10, 0, 20, 10], [20, 0, 30, 10]], dtype=torch.float32)
     fine_tiles = []
+    fuse_calls = []
     monkeypatch.setattr(predict, "tile_grid", lambda *args: tiles)
     monkeypatch.setattr(predict, "coarse_pass", lambda *args, **kwargs: ("coarse", [torch.zeros(1)]))
 
@@ -42,15 +43,24 @@ def test_predict_runs_fine_pass_only_on_selected_tiles(monkeypatch):
         fine_tiles.extend(selected.tolist())
         return []
 
+    def fuse(_coarse, _fine, selected, selected_tiles, **kwargs):
+        fuse_calls.append((selected, selected_tiles, kwargs))
+        return "fused"
+
     monkeypatch.setattr(predict, "tile_pass", tile_pass)
-    monkeypatch.setattr(predict, "fuse", lambda *args: "fused")
+    monkeypatch.setattr(predict, "fuse", fuse)
     cfg = {"s": 4, "tile": 10, "overlap": 1, "budget_norm_k": 20}
 
     result = predict.predict_image(torch.zeros(3, 10, 30), None, Scorer(), cfg, torch.device("cpu"), 1)
     assert result[0] == "fused"
     assert result[1].tolist() == [1]
     assert fine_tiles == [tiles[1].tolist()]
+    assert fuse_calls[0][0].tolist() == [0]
+    assert torch.equal(fuse_calls[0][1], tiles[[1]])
+    assert fuse_calls[0][2]["coarse_full_min_side"] == 2
 
     fine_tiles.clear()
     predict.predict_image(torch.zeros(3, 10, 30), None, Scorer(), cfg, torch.device("cpu"), 0)
     assert fine_tiles == []
+    assert fuse_calls[1][0].numel() == 0
+    assert fuse_calls[1][1].shape == (0, 4)

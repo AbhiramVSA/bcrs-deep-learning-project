@@ -46,7 +46,8 @@ def predict_image(image: torch.Tensor, detector, scorer, cfg: dict, device: torc
     scores = scorer(features[-1], budget, [tiles], s * 128.0)[0].float().cpu()
     indices, selected_tiles = select_tiles(scores, tiles, k)
     fine = tile_pass(detector, image, selected_tiles, device) if len(selected_tiles) else []
-    fused = fuse(coarse, fine, torch.arange(len(selected_tiles)), selected_tiles)
+    fused = fuse(coarse, fine, torch.arange(len(selected_tiles)), selected_tiles,
+                 coarse_full_min_side=2 * overlap)
     return fused, indices, scores, selected_tiles
 
 
