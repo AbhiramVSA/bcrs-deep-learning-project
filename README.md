@@ -1,4 +1,18 @@
-# Budget-Constrained Region Selection (BCRS)
+<p align="center">
+  <img src="assets/bcrs-mark.svg" alt="Aerial image grid with three selected detection tiles" width="112" />
+</p>
+
+<h1 align="center">Budget-Constrained Region Selection</h1>
+
+<p align="center">Two-pass object detection that ranks aerial image tiles before it runs detection at full resolution.</p>
+
+<p align="center">
+  <a href="#submission-status">Submission status</a> ·
+  <a href="#repository-contents">Repository</a> ·
+  <a href="#install">Install</a> ·
+  <a href="#predict-one-image">Predict an image</a> ·
+  <a href="#paper-source">Paper</a>
+</p>
 
 BCRS is a two-pass FCOS model for small-object detection in aerial images. It scores image tiles and runs native-resolution detection on the top-k tiles.
 
