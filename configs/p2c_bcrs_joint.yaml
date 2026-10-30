@@ -1,0 +1,25 @@
+# P2c: full BCRS joint training (detector + budget-conditioned scorer).
+# Initializes from the frozen-BatchNorm native-resolution detector (joint
+# training must use a frozen backbone: with trainable BN the per-tile fine
+# losses depend on which tiles share a batch — see tests/test_joint.py) and
+# the P2b scorer. k is sampled per iteration in [k_min, k_max]; budget input
+# B = k / budget_norm_k. ~3 h on the A100 at batch 4.
+run_name: p2c_bcrs_joint
+detector_ckpt: runs/p1_uniform_s1_fbn/best.pth
+scorer_ckpt: runs/p2b_scorer_s4coarse/scorer_best.pth
+s: 4.0
+tile: 512
+overlap: 32
+k_min: 1
+k_max: 8
+budget_norm_k: 20
+lambda_sel: 0.5
+refine_targets: true
+epochs: 12
+batch_size: 4
+lr: 5.0e-5
+scorer_lr: 5.0e-4
+amp: bf16
+num_workers: 16
+eval_every_epochs: 2
+eval_k: 3

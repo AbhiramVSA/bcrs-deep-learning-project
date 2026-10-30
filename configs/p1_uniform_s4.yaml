@@ -1,0 +1,12 @@
+# P1: uniform-resolution baseline, downsample s=4 (the BCRS coarse-pass regime).
+run_name: p1_uniform_s4
+arch: fcos_r18
+downsample: 4.0
+epochs: 20
+batch_size: 16
+lr: 2.0e-4
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 5

@@ -1,0 +1,16 @@
+# P1 recipe v2 at half resolution: identical recipe to p1_uniform_s1_v2 so the
+# uniform curve is measured on one consistent detector.
+run_name: p1_uniform_s2_v2
+arch: fcos_r18
+frozen_bn: true
+scale_jitter: [0.7, 1.4]
+ema: true
+downsample: 2.0
+epochs: 30
+batch_size: 8
+lr: 1.0e-4
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 5

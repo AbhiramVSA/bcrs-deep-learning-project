@@ -1,0 +1,12 @@
+[project]
+name = "bcrs"
+version = "0.1.0"
+description = "Budget-Conditioned Region Selection for efficient small-object detection"
+requires-python = ">=3.10"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

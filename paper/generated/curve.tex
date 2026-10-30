@@ -1,0 +1,17 @@
+\begin{table}[t]
+\caption{AP / AP$_s$ (\%) versus tile budget $k$ on VisDrone-DET val (source: \texttt{p3\_sweep\_joint\_v3}). Cost is relative to one dense native-resolution pass, using mean selected tile count divided by mean image area (Eq.~\eqref{eq:proxy}). Evaluator caps per category per image: AP 100, AP$_s$ 500. Whole-image native inference with the jointly trained detector: AP 22.8, AP$_s$ 14.1 at cost 1.00. Seed 0; Table~\ref{tab:seeds} gives three seeds. Corrected v3 generation.}
+\label{tab:curve}
+\centering
+\begin{tabular}{ccccc}
+\toprule
+$k$ & Cost & Random & Learned & Oracle \\
+\midrule
+0 & 0.06 & 5.2 / 0.6 & 5.2 / 0.6 & 5.2 / 0.6 \\
+1 & 0.34 & 10.0 / 4.9 & 14.4 / 10.1 & 14.7 / 10.8 \\
+2 & 0.61 & 13.1 / 7.4 & 17.6 / 12.0 & 18.2 / 12.9 \\
+3 & 0.88 & 15.7 / 9.1 & 19.8 / 13.4 & 20.4 / 13.8 \\
+4 & 1.15 & 17.4 / 10.4 & 20.8 / 13.9 & 21.6 / 14.2 \\
+6 & 1.70 & 20.5 / 12.7 & 22.1 / 14.3 & 22.4 / 14.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

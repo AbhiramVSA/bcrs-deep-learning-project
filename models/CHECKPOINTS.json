@@ -1,0 +1,22 @@
+[
+  {
+    "file": "models/v3/detector_best.pth",
+    "bytes": 76572299,
+    "sha256": "a2889927fcca22547f5c5a428dcc93307abf75acc408cae29d559bbb00499265",
+    "run_name": "p2c_bcrs_joint_v3",
+    "seed": 0,
+    "epoch_zero_based": 11,
+    "training_epochs": 12,
+    "paper_v3_checkpoint": true
+  },
+  {
+    "file": "models/v3/scorer_best.pth",
+    "bytes": 3248149,
+    "sha256": "6b185a7651ee334de68188a90333e3f859df776795c35d0d0a8850f3b1eb2e05",
+    "run_name": "p2c_bcrs_joint_v3",
+    "seed": 0,
+    "epoch_zero_based": 11,
+    "training_epochs": 12,
+    "paper_v3_checkpoint": true
+  }
+]

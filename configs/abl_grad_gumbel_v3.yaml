@@ -1,0 +1,24 @@
+# Recipe v3 = recipe v2 with the fp32 box decoder (2026-10-05). v2 decoded boxes
+# in bf16 under autocast, in the GIoU loss and at evaluation; see
+# src/bcrs/models/detector.py::Float32BoxCoder. Everything else is unchanged.
+# Ablation (iii): Gumbel-softmax top-k relaxation instead of perturbed optimizer.
+run_name: abl_grad_gumbel_v3
+selection_grad: gumbel
+detector_ckpt: runs/p1_uniform_s1_v3/best.pth
+scorer_ckpt: runs/p2b_scorer_s4v3/scorer_best.pth
+s: 4.0
+tile: 512
+overlap: 64
+k_min: 1
+k_max: 8
+budget_norm_k: 20
+lambda_sel: 0.5
+refine_targets: true
+epochs: 12
+batch_size: 4
+lr: 5.0e-5
+scorer_lr: 5.0e-4
+amp: bf16
+num_workers: 16
+eval_every_epochs: 2
+eval_k: 3

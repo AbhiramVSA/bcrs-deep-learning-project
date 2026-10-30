@@ -1,0 +1,23 @@
+{
+  "recovery_date_utc": "2026-10-30",
+  "run_name": "p2c_bcrs_joint_v3",
+  "seed": 0,
+  "recorded_training_git_commit": "67bd3f1",
+  "recovery_repository_head": "db6a543ecd7033f5d24d369326123bf146fc459d",
+  "recovery_repository_clean": true,
+  "remote_local_checkpoint_hashes_match": true,
+  "detector_and_scorer_cfg_equal": true,
+  "source_hashes_remote_local_match": {
+    "src/bcrs/models/detector.py": "abffbd1b70754e405a0a6be1109b3bb0183a35ed3360f7b93e946e1fefe19e3e",
+    "src/bcrs/models/scorer.py": "35f419156b613c2e6dead03fdc41cff29c87ad9c1693b62756c8b5a2cd444553",
+    "src/bcrs/twopass.py": "1abb0797770c9318003b401b015f9c9d6117ad98ce5ded4604f6952a37b26c02",
+    "src/bcrs/tiles.py": "678f73de91bcfed3d755e4982ccbf91e134e9fe360eaa6a0767ff004cea36e6f"
+  },
+  "run_metrics_sha256": "b9c4a98ea49aa3ee8240628289cb4161a6ebe6b68d93473bba58f2be330bfe01",
+  "run_log_sha256": "cdf534060a8969fee40fc995d9dc4297bd53cb47252c07d6bd0db3580ae75c56",
+  "run_config_sha256": "f8b86dca1500cf383ba285617fbc86b79a43a0007ab1f809aeec0aae490217b0",
+  "recovered_run_metadata_matches_local_archives": true,
+  "full_accuracy_reevaluation_performed": false,
+  "historical_environment_recreated": false,
+  "recorded_training_git_commit_full": "67bd3f19b9a7e282c52b96cb4f80a55444060016"
+}

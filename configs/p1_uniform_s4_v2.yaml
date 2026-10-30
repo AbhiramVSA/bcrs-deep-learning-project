@@ -1,0 +1,16 @@
+# P1 recipe v2 at quarter resolution (the BCRS coarse-pass regime): identical
+# recipe to p1_uniform_s1_v2.
+run_name: p1_uniform_s4_v2
+arch: fcos_r18
+frozen_bn: true
+scale_jitter: [0.7, 1.4]
+ema: true
+downsample: 4.0
+epochs: 30
+batch_size: 16
+lr: 2.0e-4
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 5

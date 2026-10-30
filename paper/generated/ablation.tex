@@ -1,0 +1,16 @@
+\begin{table*}[t]
+\caption{Ablations on VisDrone-DET val. AP (\%) at $k$ selected tiles, AP$_s$ and selection recall (\%) at $k{=}3$, and area under the AP-versus-cost curve over the full sweep (cost 0.06 to 2.19 in units of one dense native pass). Evaluator caps per category per image: AP 100, AP$_s$ 500. Recall is the mean per-image unique-owner recall over images with misses. Rows (ii)--(iv) are separate 12-epoch joint trainings from the same initialization; row (i) re-evaluates the full model with the budget input held at $b{=}3/20$ for every $k$. One training run (seed 0) per row; at the displayed budgets, the largest AP difference from the full model is 0.6 points. Corrected v3 generation.}
+\label{tab:ablation}
+\centering
+\begin{tabular}{lcccccccc}
+\toprule
+Variant & $k{=}1$ & $k{=}2$ & $k{=}3$ & $k{=}4$ & $k{=}6$ & AP$_s$@3 & Rec@3 & AUC \\
+\midrule
+Full model (perturbed top-$k$, self-derived targets, FiLM) & 14.4 & 17.6 & 19.8 & 20.8 & 22.1 & 13.4 & 75.8 & 0.405 \\
+(i) budget input fixed at evaluation & 14.3 & 17.6 & 19.8 & 20.8 & 22.2 & 13.4 & 75.8 & 0.405 \\
+(ii) object-count targets, no refinement & 14.6 & 17.7 & 20.2 & 21.2 & 22.4 & 13.6 & 77.5 & 0.410 \\
+(iii) Gumbel-softmax surrogate & 15.0 & 18.0 & 20.3 & 21.4 & 22.3 & 13.6 & 77.6 & 0.413 \\
+(iv) no gradient through selection & 14.6 & 17.7 & 20.1 & 21.2 & 22.4 & 13.6 & 77.5 & 0.409 \\
+\bottomrule
+\end{tabular}
+\end{table*}

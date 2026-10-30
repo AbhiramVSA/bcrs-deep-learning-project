@@ -1,0 +1,15 @@
+# Controlled test of the small-batch BatchNorm hypothesis: identical to
+# p1_uniform_s1 in every respect except frozen_bn. If AP moves substantially,
+# BN is the root cause of s1 <= s2.
+run_name: p1_uniform_s1_fbn
+arch: fcos_r18
+frozen_bn: true
+downsample: 1.0
+epochs: 20
+batch_size: 4
+lr: 5.0e-5
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 5

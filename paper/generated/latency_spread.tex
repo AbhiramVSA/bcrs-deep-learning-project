@@ -1,0 +1,15 @@
+\begin{table}[t]
+\caption{Batch-one timing spread for the joint detector on VisDrone-DET val. Values are milliseconds per frame from per-image component sums. Each mode uses 100 timed images on a shared A100. The p95 describes this sample and is not a deadline guarantee. Source: \texttt{latency\_v3/gpu\_b1.json}.}
+\label{tab:latency_spread}
+\centering
+\begin{tabular}{lccc}
+\toprule
+Mode & Median & Mean & p95 \\
+\midrule
+Dense native & 19.3 & 22.3 & 37.4 \\
+BCRS, $k{=}1$ & 42.7 & 45.8 & 61.2 \\
+BCRS, $k{=}3$ & 53.1 & 58.1 & 81.1 \\
+BCRS, $k{=}6$ & 73.8 & 76.8 & 103.5 \\
+\bottomrule
+\end{tabular}
+\end{table}

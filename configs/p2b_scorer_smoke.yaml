@@ -1,0 +1,12 @@
+# Local smoke for the scorer trainer (RTX 3060): tiny subsets, throwaway detector.
+run_name: p2b_scorer_smoke
+detector_ckpt: runs/p0_smoke_overfit/best.pth
+train_dir: data/visdrone/VisDrone2019-DET-val
+val_dir: data/visdrone/VisDrone2019-DET-val
+max_train_images: 24
+max_val_images: 16
+epochs: 2
+batch_size: 2
+num_workers: 0
+amp: bf16
+log_every_iters: 4

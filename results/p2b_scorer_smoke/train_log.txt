@@ -1,0 +1,10 @@
+[16:31:55] run=p2b_scorer_smoke detector=runs/p0_smoke_overfit/best.pth (fcos_r18, frozen) s=4.0 tile=512/32 scorer_params=809.3K train=24 val=16 amp=bf16 commit=1710083
+[16:32:03] e0 it4/24 loss=1.3649 bce=0.8311 rank=0.5338 pos_tiles=7/12 lr=9.80e-04 1.1 img/s
+[16:32:03] e0 it8/24 loss=1.0601 bce=0.3131 rank=0.7469 pos_tiles=11/12 lr=8.27e-04 2.0 img/s
+[16:32:04] e0 it12/24 loss=0.6342 bce=0.1883 rank=0.4459 pos_tiles=12/12 lr=5.71e-04 2.8 img/s
+[16:32:05] eval e0: learned@3=0.755 oracle@3=0.895 random@3=0.518 (n=16)
+[16:32:06] e1 it16/24 loss=1.8665 bce=1.0803 rank=0.7861 pos_tiles=5/10 lr=2.92e-04 13.1 img/s
+[16:32:06] e1 it20/24 loss=0.9788 bce=0.3775 rank=0.6012 pos_tiles=9/10 lr=7.94e-05 13.0 img/s
+[16:32:07] e1 it24/24 loss=0.8899 bce=0.1443 rank=0.7456 pos_tiles=10/10 lr=0.00e+00 12.5 img/s
+[16:32:08] eval e1: learned@3=0.782 oracle@3=0.895 random@3=0.518 (n=16)
+[16:32:08] done. best learned_recall@3=0.7817 -> results\p2b_scorer_smoke\metrics.json

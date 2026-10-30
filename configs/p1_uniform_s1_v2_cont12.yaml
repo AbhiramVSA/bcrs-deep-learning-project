@@ -1,0 +1,24 @@
+# Matched-epochs control for the joint model (audit finding F41: the joint
+# model had 30 + 12 epochs, the native baseline 30). Continue the recipe-v2
+# native-resolution detector for 12 more epochs on whole images with the same
+# lr, batch and schedule as the joint training, so the comparison "joint BCRS
+# vs dense native" is at equal training length. Inits from the EMA weights
+# saved in best.pth; optimizer and cosine schedule start fresh, like the joint run.
+run_name: p1_uniform_s1_v2_cont12
+arch: fcos_r18
+frozen_bn: true
+scale_jitter: [0.7, 1.4]
+ema: true
+init_ckpt: runs/p1_uniform_s1_v2/best.pth
+# v2 models were trained with the bf16 box decode; keep it so the control
+# matches the v2 joint model. Evaluate the result with fp32 (eval_ckpt.py).
+legacy_bf16_decode: true
+downsample: 1.0
+epochs: 12
+batch_size: 4
+lr: 5.0e-5
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 2
