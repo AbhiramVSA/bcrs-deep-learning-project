@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/bcrs-mark.svg" alt="Aerial image grid with three selected detection tiles" width="112" />
+  <img src="assets/bcrs-logo.png" alt="Selected aerial image tiles converge on a detection region" width="200" />
 </p>
 
 <h1 align="center">Budget-Constrained Region Selection</h1>
