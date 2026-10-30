@@ -1,8 +1,9 @@
 import pytest
 import torch
+from PIL import Image
 
 from scripts import predict
-from scripts.predict import select_tiles
+from scripts.predict import annotate_detections, select_tiles
 
 
 def test_select_tiles_uses_only_top_k_and_handles_zero():
@@ -26,6 +27,22 @@ def test_select_tiles_clamps_k_and_rejects_invalid_input():
         select_tiles(scores, tiles, -1)
     with pytest.raises(ValueError, match="same number"):
         select_tiles(scores[:1], tiles, 1)
+
+
+def test_annotation_and_export_rows_skip_background_label():
+    image = Image.new("RGB", (30, 30), color="white")
+    detections = {
+        "boxes": torch.tensor([[1, 1, 8, 8], [15, 15, 25, 25]], dtype=torch.float32),
+        "scores": torch.tensor([0.99, 0.8]),
+        "labels": torch.tensor([0, 1]),
+    }
+
+    rows = annotate_detections(image, detections)
+
+    assert [row["label"] for row in rows] == [1]
+    assert rows[0]["category"] == "pedestrian"
+    assert image.getpixel((1, 1)) == (255, 255, 255)
+    assert image.getpixel((15, 15)) == (255, 0, 0)
 
 
 def test_predict_runs_fine_pass_only_on_selected_tiles(monkeypatch):

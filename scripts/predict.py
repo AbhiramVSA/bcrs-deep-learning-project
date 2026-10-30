@@ -51,6 +51,20 @@ def predict_image(image: torch.Tensor, detector, scorer, cfg: dict, device: torc
     return fused, indices, scores, selected_tiles
 
 
+def annotate_detections(image: Image.Image, detections: dict) -> list[dict]:
+    draw = ImageDraw.Draw(image)
+    rows = []
+    for box, score, label in zip(detections["boxes"].tolist(), detections["scores"].tolist(),
+                                 detections["labels"].tolist()):
+        if int(label) < 1:
+            continue
+        category = CATEGORIES.get(int(label), f"class-{int(label)}")
+        draw.rectangle(box, outline="red", width=2)
+        draw.text((box[0], max(0, box[1] - 12)), f"{category} {score:.2f}", fill="red")
+        rows.append({"box_xyxy": box, "score": float(score), "label": int(label), "category": category})
+    return rows
+
+
 def _load_checkpoint(path: Path) -> dict:
     value = torch.load(path, map_location="cpu", weights_only=True)
     if not isinstance(value, dict):
@@ -99,14 +113,7 @@ def main() -> None:
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     annotated = original.copy()
-    draw = ImageDraw.Draw(annotated)
-    rows = []
-    for box, score, label in zip(detections["boxes"].tolist(), detections["scores"].tolist(),
-                                 detections["labels"].tolist()):
-        category = CATEGORIES.get(int(label), f"class-{int(label)}")
-        draw.rectangle(box, outline="red", width=2)
-        draw.text((box[0], max(0, box[1] - 12)), f"{category} {score:.2f}", fill="red")
-        rows.append({"box_xyxy": box, "score": float(score), "label": int(label), "category": category})
+    rows = annotate_detections(annotated, detections)
     annotated.save(args.output_dir / "annotated.png")
 
     selected = [{"index": int(index), "box_xyxy": [float(v) for v in box],
