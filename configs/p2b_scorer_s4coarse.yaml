@@ -1,0 +1,15 @@
+# P2b: learned tile scorer on the FROZEN s=4 detector (the coarse-pass model).
+# Trains only the scoring head (~0.6M params); coarse pass is cheap (~95 img/s),
+# so 10 epochs is ~15-20 min on the A100. Eval = object-level selection recall@k
+# of learned vs oracle vs random rankings (no fine pass needed).
+run_name: p2b_scorer_s4coarse
+detector_ckpt: runs/p1_uniform_s4/best.pth
+s: 4.0
+tile: 512
+overlap: 32
+epochs: 10
+batch_size: 8
+lr: 1.0e-3
+amp: bf16
+num_workers: 16
+eval_every_epochs: 1

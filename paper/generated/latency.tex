@@ -1,0 +1,19 @@
+\begin{table}[t]
+\caption{Median timings (ms/frame) on VisDrone-DET val subsets. All modes use joint detector weights, not the separately trained dense accuracy baselines. GPU: NVIDIA A100-PCIE-40GB, bf16, shared. b1: median of per-image component sums, excluding top-$k$, initial host-to-device transfer and loading (100 timed images); scoring includes device-to-host transfer. b8: median batch time divided by eight (nine timed batches); fine tiles are chunked at 32. CPU: AMD EPYC 7502 32-Core Processor, fp32, 40 timed images. Cost is a pixel-area proxy, not measured operations. See Section~\ref{sec:latency} for scope and mean-versus-median differences (source: \texttt{latency\_v3}). Corrected v3 generation.}
+\label{tab:latency}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Mode & Cost & GPU b1 & GPU b8 & CPU 4 thr. & CPU 16 thr. \\
+\midrule
+Dense, $s{=}4$ & 0.06 & 19.3 & 6.8 & 108.9 & 57.7 \\
+Dense, $s{=}2$ & 0.25 & 19.2 & 6.2 & 278.5 & 118.7 \\
+Dense, $s{=}1$ & 1.00 & 19.3 & 12.7 & 1004.1 & 389.1 \\
+BCRS, $k{=}1$ & 0.34 & 42.7 & 16.2 & 386.1 & 173.6 \\
+BCRS, $k{=}2$ & 0.61 & 47.8 & 24.5 & 628.4 & 256.3 \\
+BCRS, $k{=}3$ & 0.88 & 53.1 & 32.3 & 902.1 & 358.3 \\
+BCRS, $k{=}4$ & 1.15 & 60.5 & 38.4 & 1143.8 & 462.0 \\
+BCRS, $k{=}6$ & 1.70 & 73.8 & 55.0 & 1706.3 & 682.1 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,3 @@
+[17:31:27] cudnn.benchmark=False (auto: off because scale_jitter varies input shapes)
+[17:31:33] initialized detector weights from runs/p1_uniform_s1_v2/best.pth (epoch 29)
+[17:31:33] run=p1_uniform_s1_v2_cont12 arch=fcos_r18 frozen_bn=True jitter=[0.7, 1.4] ema=True params=19.11M device=cuda amp=bf16 s=1.0 train=6471 val=548 commit=b5b8696

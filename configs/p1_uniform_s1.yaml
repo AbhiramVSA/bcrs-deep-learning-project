@@ -1,0 +1,13 @@
+# P1: uniform-resolution baseline, native resolution (s=1).
+# Heaviest run: ~2000x1500 inputs. Batch size set for 40GB A100; raise if 80GB.
+run_name: p1_uniform_s1
+arch: fcos_r18
+downsample: 1.0
+epochs: 20
+batch_size: 4
+lr: 5.0e-5
+warmup_iters: 500
+amp: bf16
+num_workers: 16
+channels_last: true
+eval_every_epochs: 5

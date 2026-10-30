@@ -1,0 +1,22 @@
+# environments
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# data & heavy artifacts (never commit)
+/data/
+checkpoints/
+runs/
+*.pth
+*.pt
+*.zip
+*.tar
+events.out.tfevents.*
+
+# results: metrics JSONs/CSVs/figures ARE tracked; weights are not
+results/**/*.pth
+results/**/*.pt
+
+.DS_Store
+*.egg-info/

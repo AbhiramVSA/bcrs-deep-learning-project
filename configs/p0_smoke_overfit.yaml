@@ -1,0 +1,16 @@
+# P0 gate: overfit 16 val images — loss must approach 0 and AP on those same
+# images must be high. Runs on the local RTX 3060 in ~10 min.
+run_name: p0_smoke_overfit
+arch: fcos_r18
+train_dir: data/visdrone/VisDrone2019-DET-val   # tiny local smoke uses val split
+downsample: 2.0
+overfit: true
+max_train_images: 16
+epochs: 60
+batch_size: 2
+lr: 2.0e-4
+warmup_iters: 100
+amp: fp16
+num_workers: 2
+eval_every_epochs: 20
+log_every_iters: 10

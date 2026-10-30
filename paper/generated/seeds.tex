@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{Seed variation of the jointly trained model: AP (\%) with learned selection at $k$ tiles, and whole-image inference with the same detector, for three joint trainings that differ only in the seed. Mean $\pm$ sample standard deviation over the three runs. AP uses 100 detections per category per image. Corrected v3 generation.}
+\label{tab:seeds}
+\centering
+\begin{tabular}{lccccc}
+\toprule
+Inference & Cost & Seed 0 & Seed 1 & Seed 2 & Mean \\
+\midrule
+whole image & 1.00 & 22.8 & 22.8 & 22.8 & 22.8 $\pm$ 0.01 \\
+$k{=}1$ & 0.34 & 14.4 & 14.5 & 14.4 & 14.4 $\pm$ 0.04 \\
+$k{=}2$ & 0.61 & 17.6 & 17.9 & 17.7 & 17.7 $\pm$ 0.14 \\
+$k{=}3$ & 0.88 & 19.8 & 20.0 & 19.9 & 19.9 $\pm$ 0.08 \\
+$k{=}4$ & 1.15 & 20.8 & 21.1 & 21.0 & 21.0 $\pm$ 0.15 \\
+$k{=}6$ & 1.70 & 22.1 & 22.3 & 22.2 & 22.2 $\pm$ 0.11 \\
+$k{=}8$ & 2.12 & 22.6 & 22.8 & 22.7 & 22.7 $\pm$ 0.11 \\
+\bottomrule
+\end{tabular}
+\end{table}
