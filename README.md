@@ -6,7 +6,7 @@ The paper studies this method on VisDrone-DET validation data. It reports that l
 
 ## Submission status
 
-The source and paper files are ready. The full submission ZIP includes smoke-test weights for the BCRS command. Those weights do not reproduce the paper results. The final v3 detector and scorer checkpoints are missing. The Google Form fields and file-size limits remain unknown because the form returned HTTP 401 during inspection.
+The source and paper files are ready. The Git repository and source ZIP do not contain model weights. The [full submission ZIP](https://github.com/AbhiramVSA/bcrs-deep-learning-project/releases/tag/submission-2026-10-30) contains the seed-0 v3 detector and scorer. They are from run `p2c_bcrs_joint_v3`, epoch 11. The archived three-tile result for this pair is 19.84 AP. The paper reports a three-seed mean of 19.92 AP. This package does not claim a new evaluation. The Google Form fields and file-size limits remain unknown because the form returned HTTP 401 during inspection.
 
 ## Repository contents
 
@@ -16,27 +16,27 @@ The source and paper files are ready. The full submission ZIP includes smoke-tes
 - `results/` contains archived metrics and training logs. Some hardware process names and paths are redacted.
 - `paper/` contains the paper PDF, LaTeX source, tables, figures, and references.
 
-The BCRS image command is `scripts/predict.py`. It requires a trained BCRS detector checkpoint and scorer checkpoint. The released source snapshot does not contain the final v3 checkpoints. The command rejects a missing checkpoint and does not create model weights.
+The BCRS image command is `scripts/predict.py`. It requires a BCRS detector checkpoint and scorer checkpoint from the full submission ZIP. The command rejects a missing checkpoint and does not create model weights.
 
 ## Install
 
 Install a PyTorch and torchvision build for your system. For CPU-only use, run:
 
 ```bash
-python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+python -m pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cpu
 python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
 ## Predict one image
 
-The full submission ZIP has smoke-test checkpoints at the paths below. They show the command flow and do not reproduce the paper results. Then run:
+The full submission ZIP has the v3 checkpoints at the paths below. Run:
 
 ```bash
 python scripts/predict.py \
   --image path/to/image.jpg \
-  --detector-ckpt models/smoke/detector_best.pth \
-  --scorer-ckpt models/smoke/scorer_best.pth \
+  --detector-ckpt models/v3/detector_best.pth \
+  --scorer-ckpt models/v3/scorer_best.pth \
   --k 3 \
   --output-dir predictions
 ```
